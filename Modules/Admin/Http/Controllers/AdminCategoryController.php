@@ -3,6 +3,7 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Requests\RequestCategory;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -15,7 +16,11 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin::category.index');
+        $categories = Category::paginate(10);
+        $viewData = [
+          'categories' => $categories
+        ];
+        return view('admin::category.index', $viewData);
     }
 
     /**
@@ -34,7 +39,15 @@ class AdminCategoryController extends Controller
      */
     public function store(RequestCategory $request)
     {
-        dd($request->all());
+        $catergory                    = new Category();
+        $catergory->c_name            = $request->name;
+        $catergory->c_slug            = str_slug($request->name);
+        $catergory->c_icon            = str_slug($request->icon);
+        $catergory->c_title_seo       = $request->c_title_seo ? $request->c_title_seo : $request->name;
+        $catergory->c_description_seo = $request->c_description_seo;
+        $catergory->save();
+
+        return redirect()->back();
     }
 
     /**

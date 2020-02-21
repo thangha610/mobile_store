@@ -12,7 +12,7 @@
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', 'AdminController@index')->name('admin.get.list.dashboard');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
     Route::group(['prefix' => 'category'], function (){
        Route::get('/', 'AdminCategoryController@index')->name('admin.get.list.category');

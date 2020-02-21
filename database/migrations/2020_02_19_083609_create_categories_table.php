@@ -21,9 +21,9 @@ class CreateCategoriesTable extends Migration
             $table->string('c_avatar')->nullable();
             $table->tinyInteger('c_active')->default()->index(1);
             $table->integer('c_total_product')->default(0);
+            $table->string('c_title_seo')->nullable();
             $table->string('c_description_seo')->nullable();
             $table->string('c_keyword_seo')->nullable();
-            $table->increments('id');
             $table->timestamps();
         });
     }

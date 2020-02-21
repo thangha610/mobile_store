@@ -8,53 +8,33 @@
         </ol>
     </div>
     <div class="table-responsive">
-        <h2>Category Management <a class="btn btn-primary pull-right" href="{{ route('admin.get.create.category') }}">Add category</a></h2>
+        <h2>Category Management <a class="btn btn-primary pull-right" href="{{ route('admin.get.create.category') }}">Add
+                category</a></h2>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
+                <th>Category</th>
+                <th>Title Seo</th>
+                <th>Status</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-            </tr>
-            <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>Integer</td>
-                <td>nec</td>
-                <td>odio</td>
-                <td>Praesent</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>libero</td>
-                <td>Sed</td>
-                <td>cursus</td>
-                <td>ante</td>
-            </tr>
-            <tr>
-                <td>1,004</td>
-                <td>dapibus</td>
-                <td>diam</td>
-                <td>Sed</td>
-                <td>nisi</td>
-            </tr>
+            @if(isset($categories))
+                @foreach($categories as $category)
+                    <tr>
+                        <td>{{$category->id}}</td>
+                        <td>{{$category->c_name}}</td>
+                        <td>{{$category->c_title_seo}}</td>
+                        <td>{{$category->c_active}}</td>
+                        <td>
+                            <div class="btn btn-primary">Edit</div>
+                            <div class="btn btn-danger">Delete</div>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>

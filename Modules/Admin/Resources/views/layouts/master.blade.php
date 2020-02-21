@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="{{ route('admin.get.list.dashboard') }}">Dashboard <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="{{ route('admin.dashboard') }}">Dashboard <span class="sr-only">(current)</span></a></li>
                 <li><a href="{{ route('admin.get.list.category') }}">Category</a></li>
                 <li><a href="#">Product</a></li>
                 <li><a href="#">News</a></li>
