@@ -29,8 +29,8 @@
                         <td>{{$category->c_title_seo}}</td>
                         <td>{{$category->c_active}}</td>
                         <td>
-                            <div class="btn btn-primary">Edit</div>
-                            <div class="btn btn-danger">Delete</div>
+                            <a href="{{ route('admin.get.edit.category', $category->id) }}" class="btn btn-primary">Edit</a>
+                            <a class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach

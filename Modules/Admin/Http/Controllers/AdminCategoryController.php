@@ -16,7 +16,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::select('id','c_name', 'c_title_seo', 'c_description_seo')->get();
         $viewData = [
           'categories' => $categories
         ];
@@ -67,7 +67,8 @@ class AdminCategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('admin::edit');
+        $category = Category::find($id);
+        return view('admin::category.update', compact('category'));
     }
 
     /**
@@ -78,7 +79,15 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $catergory                    = Category::find($id);
+        $catergory->c_name            = $request->name;
+        $catergory->c_slug            = str_slug($request->name);
+        $catergory->c_icon            = str_slug($request->icon);
+        $catergory->c_title_seo       = $request->c_title_seo ? $request->c_title_seo : $request->name;
+        $catergory->c_description_seo = $request->c_description_seo;
+        $catergory->save();
+
+        return redirect()->back(); 
     }
 
     /**

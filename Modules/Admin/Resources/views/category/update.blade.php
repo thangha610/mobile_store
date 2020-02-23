@@ -12,7 +12,7 @@
             @csrf
             <div class="form-group">
                 <label for="name">Category name:</label>
-                <input placeholder="Category name" type="text" name="name" value="{{ old('name') }}"
+                <input placeholder="Category name" type="text" name="name" value="{{ old('name', $category->c_name) }}"
                        class="form-control" id="category_name">
                 @if($errors->has('name'))
                     <div class="error-text">{{ $errors->first('name') }}</div>
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label for="name">Category icon:</label>
-                <input placeholder="Icon" type="text" name="icon" value="{{ old('icon') }}" class="form-control"
+                <input placeholder="Icon" type="text" name="icon" value="{{ old('icon', $category->c_icon) }}" class="form-control"
                        id="category_icon">
                 @if($errors->has('icon'))
                     <div class="error-text">{{ $errors->first('icon') }}</div>
@@ -28,20 +28,20 @@
             </div>
             <div class="form-group">
                 <label for="c_title_seo">Meta Title:</label>
-                <input placeholder="Meta Title" type="text" name="c_title_seo" value="{{ old('c_title_seo') }}"
+                <input placeholder="Meta Title" type="text" name="c_title_seo" value="{{ old('c_title_seo', $category->c_title_seo) }}"
                        class="form-control" id="c_title_seo">
             </div>
             <div class="form-group">
                 <label for="c_description_seo">Meta Description:</label>
                 <input placeholder="Meta Description" type="text" name="c_description_seo"
-                       value="{{ old('c_description_seo') }}" class="form-control" id="c_description_seo">
+                       value="{{ old('c_description_seo', $category->c_description_seo) }}" class="form-control" id="c_description_seo">
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label for="hot"><input type="checkbox" name="hot"> Trending </label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" class="btn btn-success">Update</button>
         </form>
     </div>
 @stop

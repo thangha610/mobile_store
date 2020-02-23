@@ -24,8 +24,14 @@ class RequestCategory extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:categories,c_name'.$this->id,
             'icon' => 'required'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'name.unique' => 'Category already existed'
         ];
     }
 }
